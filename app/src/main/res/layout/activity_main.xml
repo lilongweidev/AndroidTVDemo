@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!--自定义的VideoView  做了绘制改变，和网络地址许可-->
+        <com.llw.androidtvdemo.view.MyVideoView
+            android:id="@+id/video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+    <!--底部控制栏  开始时间 进度条 结束时间-->
+    <RelativeLayout
+        android:background="@drawable/shape_gradual_change"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_100">
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_margin="@dimen/dp_10"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_play_time"
+                android:text="00:00"
+                android:textSize="@dimen/sp_24"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <SeekBar
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginRight="@dimen/dp_20"
+                android:id="@+id/time_seekBar"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:max="100"
+                android:maxHeight="3dp"
+                android:minHeight="3dp"
+                android:progress="0"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:thumb="@drawable/thumb" />
+
+            <TextView
+                android:id="@+id/tv_total_time"
+                android:text="00:00"
+                android:textSize="@dimen/sp_24"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!--视频结束时 显示黑色背景-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/lay_finish_bg"
+        android:background="#000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <!--视频播放中 控制暂停和播放的按钮-->
+    <ImageButton
+        android:visibility="gone"
+        android:focusable="true"
+        android:layout_centerInParent="true"
+        android:id="@+id/btn_play_or_pause"
+        android:background="@mipmap/icon_pause"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"/>
+
+    <!--视频结束时 显示重播图标-->
+    <ImageButton
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:id="@+id/btn_restart_play"
+        android:background="@mipmap/icon_restart_play"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"/>
+</RelativeLayout>
